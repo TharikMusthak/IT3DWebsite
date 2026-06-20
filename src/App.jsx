@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
+import WelcomeScreen from './server/components/WelcomeScreen';
 
 const FONTS = 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap';
 const EASE = 'cubic-bezier(0.16, 1, 0.3, 1)';
