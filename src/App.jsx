@@ -7,10 +7,10 @@ const ACCENTS = ['#00ffcc', '#ff007f', '#007fff', '#bf5aff', '#00ffcc'];
 const NODE_COUNT = 16;
 
 /* ══════════════════════════════════════════════
-   ✦ SHARED THREE.JS LOADER — fixes duplicate canvas bug
-   Only one <script> tag ever gets injected, no matter
-   how many 3D components mount at the same time.
-   ══════════════════════════════════════════════ */
+    ✦ SHARED THREE.JS LOADER — fixes duplicate canvas bug
+    Only one <script> tag ever gets injected, no matter
+    how many 3D components mount at the same time.
+    ══════════════════════════════════════════════ */
 let _threeLoadPromise = null;
 function loadThree() {
   if (window.THREE) return Promise.resolve();
@@ -28,25 +28,25 @@ function loadThree() {
 function getTheme(mode) {
   const dark = mode === 'dark';
   return {
-    bg:            dark ? '#07080f' : '#f4f5f9',
-    bgSecondary:   dark ? '#0d0f1a' : '#eceef4',
-    surface:       dark ? 'rgba(255,255,255,0.025)' : 'rgba(0,0,0,0.03)',
-    border:        dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.09)',
-    borderHover:   dark ? 'rgba(255,255,255,0.14)' : 'rgba(0,0,0,0.18)',
-    text:          dark ? '#EEF0F8' : '#0f1117',
-    textMuted:     dark ? '#8a9ab8' : '#546180',
-    textFaint:     dark ? 'rgba(255,255,255,0.35)' : 'rgba(0,0,0,0.35)',
+    bg:             dark ? '#07080f' : '#f4f5f9',
+    bgSecondary:    dark ? '#0d0f1a' : '#eceef4',
+    surface:        dark ? 'rgba(255,255,255,0.025)' : 'rgba(0,0,0,0.03)',
+    border:         dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.09)',
+    borderHover:    dark ? 'rgba(255,255,255,0.14)' : 'rgba(0,0,0,0.18)',
+    text:           dark ? '#EEF0F8' : '#0f1117',
+    textMuted:      dark ? '#8a9ab8' : '#546180',
+    textFaint:      dark ? 'rgba(255,255,255,0.35)' : 'rgba(0,0,0,0.35)',
     textVeryFaint: dark ? 'rgba(255,255,255,0.25)' : 'rgba(0,0,0,0.25)',
-    textGhost:     dark ? '#4a5568' : '#9baabb',
-    navBg:         dark ? 'rgba(7,8,15,0.88)' : 'rgba(244,245,249,0.92)',
-    navBorder:     dark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.07)',
+    textGhost:      dark ? '#4a5568' : '#9baabb',
+    navBg:          dark ? 'rgba(7,8,15,0.88)' : 'rgba(244,245,249,0.92)',
+    navBorder:      dark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.07)',
     glass: {
       background:        dark ? 'rgba(255,255,255,0.025)' : 'rgba(255,255,255,0.55)',
       border:            dark ? '1px solid rgba(255,255,255,0.07)' : '1px solid rgba(255,255,255,0.6)',
       borderRadius:      '20px',
       backdropFilter:    'blur(16px) saturate(180%)',
       WebkitBackdropFilter: 'blur(16px) saturate(180%)',
-      boxShadow:         dark ? 'none' : '0 8px 32px rgba(31,41,55,0.08)',
+      boxShadow:          dark ? 'none' : '0 8px 32px rgba(31,41,55,0.08)',
     },
     inputBg:       dark ? 'rgba(255,255,255,0.03)' : 'rgba(0,0,0,0.04)',
     inputBorder:   dark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.12)',
@@ -58,7 +58,7 @@ function getTheme(mode) {
     footerBorder:  dark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.07)',
     cookieBg:      dark ? 'rgba(7,8,15,0.97)' : 'rgba(244,245,249,0.98)',
     cookieBorder:  dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.08)',
-    mapBg:         dark ? '#0a0c14' : '#e8ecf3',
+    mapBg:          dark ? '#0a0c14' : '#e8ecf3',
     mapGridStroke: dark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.05)',
     mapRoadMain:   dark ? 'rgba(255,255,255,0.13)' : 'rgba(0,0,0,0.13)',
     mapRoadMainGlow: dark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.04)',
@@ -102,9 +102,8 @@ function ThemeToggle({ theme, onToggle }) {
 }
 
 /* ══════════════════════════════════════════════
-   ✦ 3D GLOBE (hero background)
-   Uses shared loadThree() — no duplicate script tags
-   ══════════════════════════════════════════════ */
+    ✦ 3D GLOBE (hero background)
+    ══════════════════════════════════════════════ */
 function Globe3D({ accent }) {
   const mountRef = useRef(null);
   const frameRef = useRef(null);
@@ -217,7 +216,6 @@ function Globe3D({ accent }) {
       });
       scene.add(new THREE.Mesh(new THREE.SphereGeometry(1.08, 32, 32), atmMat));
 
-      // ── Quaternion objects — allocated once, reused every frame ──
       const _qX = new THREE.Quaternion();
       const _qY = new THREE.Quaternion();
       const _axisX = new THREE.Vector3(1, 0, 0);
@@ -229,7 +227,7 @@ function Globe3D({ accent }) {
 
       const DAMPING         = 0.92;
       const DRAG_SENSITIVITY = 0.005;
-      const AUTO_SPEED      = 0.0018; // always-on baseline spin
+      const AUTO_SPEED      = 0.0018;
 
       const canvas = renderer.domElement;
       canvas.style.cursor = 'grab';
@@ -254,7 +252,6 @@ function Globe3D({ accent }) {
         velX = dy * DRAG_SENSITIVITY;
         rotY += velY;
         rotX += velX;
-        // NO clamp — full 360° in all directions
       };
 
       const onPointerUp = () => {
@@ -272,17 +269,14 @@ function Globe3D({ accent }) {
         frameRef.current = requestAnimationFrame(animate);
 
         if (!isDragging) {
-          // Inertia: decay and apply residual velocity
           velX *= DAMPING;
           velY *= DAMPING;
           rotX += velX;
           rotY += velY;
         }
 
-        // Auto-rotation: always runs every frame, drag input adds on top
         rotY += AUTO_SPEED;
 
-        // Quaternion composition — no gimbal lock, full 360° all axes
         _qX.setFromAxisAngle(_axisX, rotX);
         _qY.setFromAxisAngle(_axisY, rotY);
         scene.quaternion.copy(_qY.clone().multiply(_qX));
@@ -335,9 +329,8 @@ function Globe3D({ accent }) {
 }
 
 /* ══════════════════════════════════════════════
-   ✦ 3D AI BRAIN
-   Uses shared loadThree()
-   ══════════════════════════════════════════════ */
+    ✦ 3D AI BRAIN
+    ══════════════════════════════════════════════ */
 function AIBrain3D({ accent }) {
   const mountRef = useRef(null);
   const frameRef = useRef(null);
@@ -365,28 +358,23 @@ function AIBrain3D({ accent }) {
 
       const mouse = { x: 0, y: 0 };
 
-const handleMouseMove = (e) => {
-  const rect = el.getBoundingClientRect();
+      const handleMouseMove = (e) => {
+        const rect = el.getBoundingClientRect();
+        mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+        mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+      };
 
-  mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-  mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-};
+      el.addEventListener('mousemove', handleMouseMove);
 
-el.addEventListener('mousemove', handleMouseMove);
+      const raycaster = new THREE.Raycaster();
+      const pointer = new THREE.Vector2();
 
-const raycaster = new THREE.Raycaster();
-const pointer = new THREE.Vector2();
+      const handleEnter = () => { camera.position.z = 3.0; };
+      const handleLeave = () => { camera.position.z = 3.5; };
 
-const handleEnter = () => {
-  camera.position.z = 3.0;
-};
+      el.addEventListener('mouseenter', handleEnter);
+      el.addEventListener('mouseleave', handleLeave);
 
-const handleLeave = () => {
-  camera.position.z = 3.5;
-};
-
-el.addEventListener('mouseenter', handleEnter);
-el.addEventListener('mouseleave', handleLeave);
       const nodeCount = 120;
       const nodes = [];
       const nodeMat = new THREE.MeshBasicMaterial({ color: new THREE.Color(accent), transparent: true, opacity: 0.9 });
@@ -429,69 +417,45 @@ el.addEventListener('mouseleave', handleLeave);
       scene.add(new THREE.Points(pGeo, pMat));
 
       let t = 0;
-     const animate = () => {
-  frameRef.current = requestAnimationFrame(animate);
+      const animate = () => {
+        frameRef.current = requestAnimationFrame(animate);
+        t += 0.012;
 
-  t += 0.012;
+        scene.rotation.y += (mouse.x * 0.5 - scene.rotation.y) * 0.05;
+        scene.rotation.x += (mouse.y * 0.3 - scene.rotation.x) * 0.05;
 
-  // Mouse follow rotation
-  scene.rotation.y += (mouse.x * 0.5 - scene.rotation.y) * 0.05;
-  scene.rotation.x += (mouse.y * 0.3 - scene.rotation.x) * 0.05;
+        pointer.x = mouse.x;
+        pointer.y = mouse.y;
+        raycaster.setFromCamera(pointer, camera);
+        const intersects = raycaster.intersectObjects(nodes);
 
-  // Raycaster hover detection
-  pointer.x = mouse.x;
-  pointer.y = mouse.y;
+        nodes.forEach((n) => {
+          const pulse = Math.sin(t * n.userData.speed + n.userData.phase) * 0.012;
+          n.position.set(n.userData.baseX + pulse, n.userData.baseY + pulse * 0.5, n.userData.baseZ);
+          const baseScale = 1 + 0.3 * Math.abs(Math.sin(t * n.userData.speed + n.userData.phase));
+          n.scale.setScalar(baseScale);
+          n.material.opacity = 0.6;
+        });
 
-  raycaster.setFromCamera(pointer, camera);
+        if (intersects.length > 0) {
+          intersects[0].object.material.opacity = 1;
+          intersects[0].object.scale.setScalar(2);
+        }
 
-  const intersects = raycaster.intersectObjects(nodes);
-
-  nodes.forEach((n) => {
-    const pulse =
-      Math.sin(t * n.userData.speed + n.userData.phase) * 0.012;
-
-    n.position.set(
-      n.userData.baseX + pulse,
-      n.userData.baseY + pulse * 0.5,
-      n.userData.baseZ
-    );
-
-    const baseScale =
-      1 + 0.3 * Math.abs(
-        Math.sin(t * n.userData.speed + n.userData.phase)
-      );
-
-    n.scale.setScalar(baseScale);
-    n.material.opacity = 0.6;
-  });
-
-  if (intersects.length > 0) {
-    intersects[0].object.material.opacity = 1;
-    intersects[0].object.scale.setScalar(2);
-  }
-
-  renderer.render(scene, camera);
-};
-
-animate();
+        renderer.render(scene, camera);
+      };
+      animate();
 
       el._updateAccent = (c) => { scene.traverse(obj => { if (obj.material) obj.material.color?.set(c); }); };
-el._cleanup = () => {
-  cancelled = true;
-
-  el.removeEventListener('mousemove', handleMouseMove);
-
-  cancelAnimationFrame(frameRef.current);
-
-  renderer.dispose();
-
-  if (el.contains(renderer.domElement)) {
-    el.removeChild(renderer.domElement);
-  }
-
-  el.removeEventListener('mouseenter', handleEnter);
-el.removeEventListener('mouseleave', handleLeave);
-};
+      el._cleanup = () => {
+        cancelled = true;
+        el.removeEventListener('mousemove', handleMouseMove);
+        cancelAnimationFrame(frameRef.current);
+        renderer.dispose();
+        if (el.contains(renderer.domElement)) el.removeChild(renderer.domElement);
+        el.removeEventListener('mouseenter', handleEnter);
+        el.removeEventListener('mouseleave', handleLeave);
+      };
     });
 
     return () => {
@@ -506,11 +470,11 @@ el.removeEventListener('mouseleave', handleLeave);
 }
 
 /* ══════════════════════════════════════════════
-   ✦ FLOATING HOLOGRAPHIC CARDS
-   ══════════════════════════════════════════════ */
+    ✦ FLOATING HOLOGRAPHIC CARDS
+    ══════════════════════════════════════════════ */
 function HolographicCards({ accent, T }) {
   const cards = [
-    { icon:'⚡', title:'Speed',  value:'98/100', sub:'Lighthouse score', color:'#00ffcc' },
+    { icon:'⚡', title:'Speed',   value:'98/100', sub:'Lighthouse score', color:'#00ffcc' },
     { icon:'📈', title:'ROAS',   value:'4.2×',   sub:'avg. return',      color:'#007fff' },
     { icon:'🚀', title:'Deploy', value:'6 wks',  sub:'avg. delivery',    color:'#bf5aff' },
     { icon:'🔒', title:'Uptime', value:'99.9%',  sub:'guaranteed SLA',   color:'#ff007f' },
@@ -570,11 +534,8 @@ function HoloCard({ card, i, T, accent }) {
 }
 
 /* ══════════════════════════════════════════════
-   ✦ 3D LOGO — FIXED
-   Uses shared loadThree() so only ONE script tag is ever
-   injected regardless of how many Logo3D instances mount.
-   Canvas-guard prevents double-init from React StrictMode.
-   ══════════════════════════════════════════════ */
+    ✦ 3D LOGO
+    ══════════════════════════════════════════════ */
 function Logo3D({ accent, size = 'normal', onClick }) {
   const mountRef = useRef(null);
   const frameRef = useRef(null);
@@ -585,9 +546,6 @@ function Logo3D({ accent, size = 'normal', onClick }) {
     let cancelled = false;
 
     loadThree().then(() => {
-      // Both guards are required:
-      // 1. cancelled — component unmounted before promise resolved
-      // 2. querySelector('canvas') — StrictMode double-invoke / second Logo3D instance
       if (cancelled || !el) return;
       if (el.querySelector('canvas')) return;
 
@@ -606,41 +564,34 @@ function Logo3D({ accent, size = 'normal', onClick }) {
       const mat = new THREE.MeshBasicMaterial({ color: new THREE.Color(accent), wireframe: true, transparent: true, opacity: 0.85 });
       const matSolid = new THREE.MeshBasicMaterial({ color: new THREE.Color(accent), transparent: true, opacity: 0.12 });
 
-      // Top bar of Z — wireframe layer
       const topBar = new THREE.Mesh(new THREE.BoxGeometry(1.4, 0.22, 0.18), mat);
       topBar.position.set(0, 0.55, 0);
       scene.add(topBar);
 
-      // Top bar of Z — solid fill layer (separate object, correct position)
       const topBarSolid = new THREE.Mesh(new THREE.BoxGeometry(1.4, 0.22, 0.18), matSolid);
       topBarSolid.position.set(0, 0.55, 0);
       scene.add(topBarSolid);
 
-      // Diagonal bar of Z
       const diagGroup = new THREE.Group();
       const diag = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.18, 0.18), mat);
       diag.rotation.z = -Math.atan2(1.2, 1.4);
       diagGroup.add(diag);
       scene.add(diagGroup);
 
-      // Bottom bar of Z — wireframe layer
       const botBar = new THREE.Mesh(new THREE.BoxGeometry(1.4, 0.22, 0.18), mat);
       botBar.position.set(0, -0.55, 0);
       scene.add(botBar);
 
-      // Bottom bar of Z — solid fill layer
       const botBarSolid = new THREE.Mesh(new THREE.BoxGeometry(1.4, 0.22, 0.18), matSolid);
       botBarSolid.position.set(0, -0.55, 0);
       scene.add(botBarSolid);
 
-      // Floating orbit ring
       const ringGeo = new THREE.TorusGeometry(0.85, 0.025, 8, 64);
       const ringMat = new THREE.MeshBasicMaterial({ color: new THREE.Color(accent), transparent: true, opacity: 0.35 });
       const ring = new THREE.Mesh(ringGeo, ringMat);
       ring.rotation.x = Math.PI * 0.3;
       scene.add(ring);
 
-      // Orbiting dot
       const orbitDot = new THREE.Mesh(new THREE.SphereGeometry(0.055, 8, 8), new THREE.MeshBasicMaterial({ color: new THREE.Color(accent) }));
       scene.add(orbitDot);
 
@@ -792,7 +743,7 @@ function AnimatedStat({value,label,accent,T}){const[ref,visible]=useReveal(0.3);
 
 const EST_SERVICES=[{id:'static',label:'Static site / portfolio',base:15000},{id:'dynamic',label:'Web app / e-commerce',base:45000},{id:'app',label:'Android app',base:60000},{id:'uiux',label:'UI/UX design only',base:12000},{id:'marketing',label:'Digital marketing',base:8000}];
 const EST_SCOPES=[{id:'small',label:'Small',mult:1.0},{id:'medium',label:'Medium',mult:1.6},{id:'large',label:'Large',mult:2.5}];
-function Estimator({accent,onInquire,T}){const[svc,setSvc]=useState('static');const[scope,setScope]=useState('small');const[timeline,setTimeline]=useState(4);const selected=EST_SERVICES.find(s=>s.id===svc);const scopeMult=EST_SCOPES.find(s=>s.id===scope).mult;const rushMult=timeline<3?1.3:timeline<5?1.1:1.0;const estimate=Math.round((selected.base*scopeMult*rushMult)/1000)*1000;const fmt=v=>'₹'+v.toLocaleString('en-IN');return(<div style={{display:'flex',flexDirection:'column',gap:'20px'}}><div><div style={{fontSize:'0.72rem',color:T.textFaint,textTransform:'uppercase',letterSpacing:'1px',marginBottom:'10px',fontFamily:'"JetBrains Mono",monospace'}}>Service type</div><div style={{display:'flex',flexDirection:'column',gap:'6px'}}>{EST_SERVICES.map(s=>(<button key={s.id} onClick={()=>setSvc(s.id)} style={{padding:'10px 14px',borderRadius:'10px',border:`1px solid ${svc===s.id?accent:T.border}`,background:svc===s.id?`${accent}12`:'transparent',color:svc===s.id?accent:T.textMuted,fontSize:'0.88rem',cursor:'pointer',textAlign:'left',transition:`all 0.2s ${EASE}`,fontFamily:'"Inter",sans-serif'}}>{s.label}</button>))}</div></div><div><div style={{fontSize:'0.72rem',color:T.textFaint,textTransform:'uppercase',letterSpacing:'1px',marginBottom:'10px',fontFamily:'"JetBrains Mono",monospace'}}>Project scope</div><div style={{display:'flex',gap:'8px'}}>{EST_SCOPES.map(s=>(<button key={s.id} onClick={()=>setScope(s.id)} style={{flex:1,padding:'9px',borderRadius:'9px',border:`1px solid ${scope===s.id?accent:T.border}`,background:scope===s.id?`${accent}12`:'transparent',color:scope===s.id?accent:T.textMuted,fontSize:'0.88rem',cursor:'pointer',transition:`all 0.2s ${EASE}`,fontFamily:'"Inter",sans-serif'}}>{s.label}</button>))}</div></div><div><div style={{fontSize:'0.72rem',color:T.textFaint,textTransform:'uppercase',letterSpacing:'1px',marginBottom:'10px',fontFamily:'"JetBrains Mono",monospace'}}>Timeline — {timeline} weeks {timeline<3?'⚡ rush':''}</div><input type="range" min="2" max="12" step="1" value={timeline} onChange={e=>setTimeline(+e.target.value)} style={{width:'100%',accentColor:accent,cursor:'pointer'}}/><div style={{display:'flex',justifyContent:'space-between',fontSize:'0.75rem',color:T.textFaint,marginTop:'5px',fontFamily:'"JetBrains Mono",monospace'}}><span>2 wk</span><span>12 wk</span></div></div><div style={{borderTop:`1px solid ${T.border}`,paddingTop:'18px',display:'flex',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',gap:'12px'}}><div><div style={{fontSize:'0.72rem',color:T.textFaint,textTransform:'uppercase',letterSpacing:'1px',fontFamily:'"JetBrains Mono",monospace',marginBottom:'4px'}}>Estimated range</div><div style={{fontSize:'1.8rem',fontWeight:700,fontFamily:'"Space Grotesk",sans-serif',color:accent,letterSpacing:'-0.02em',transition:'color 0.4s'}}>{fmt(estimate)} – {fmt(Math.round(estimate*1.3/1000)*1000)}</div><div style={{fontSize:'0.75rem',color:T.textVeryFaint,marginTop:'3px'}}>indicative · final quote after consultation</div></div><MagneticButton onClick={()=>onInquire(selected.label)} strength={0.2} style={{background:accent,color:'#07080f',border:'none',padding:'12px 22px',borderRadius:'10px',fontWeight:700,fontSize:'0.88rem',cursor:'pointer',fontFamily:'"Inter",sans-serif',whiteSpace:'nowrap',transition:`background 0.4s ${EASE}`}}>Get exact quote →</MagneticButton></div></div>);}
+function Estimator({accent,onInquire,T}){const[svc,setSvc]=useState('static');const[scope,setScope]=useState('small');const[timeline,setTimeline]=useState(4);const selected=EST_SERVICES.find(s=>s.id===svc);const scopeMult=EST_SCOPES.find(s=>s.id===scope).mult;const rushMult=timeline<3?1.3:timeline<5?1.1:1.0;const estimate=Math.round((selected.base*scopeMult*rushMult)/1000)*1000;const fmt=v=>'₹'+v.toLocaleString('en-IN');return(<div style={{display:'flex',flexDirection:'column',gap:'20px'}}><div><div style={{fontSize:'0.72rem',color:T.textFaint,textTransform:'uppercase',letterSpacing:'1px',marginBottom:'10px',fontFamily:'"JetBrains Mono",monospace'}}>Service type</div><div style={{display:'flex',flexDirection:'column',gap:'6px'}}>{EST_SERVICES.map(s=>(<button key={s.id} onClick={()=>setSvc(s.id)} style={{padding:'10px 14px',borderRadius:'10px',border:`1px solid ${svc===s.id?accent:T.border}`,background:svc===s.id?`${accent}12`:'transparent',color:svc===s.id?accent:T.textMuted,fontSize:'0.88rem',cursor:'pointer',textAlign:'left',transition:`all 0.2s ${EASE}`,fontFamily:'"Inter",sans-serif'}}>{s.label}</button>))}</div></div><div><div style={{fontSize:'0.72rem',color:T.textFaint,textTransform:'uppercase',letterSpacing:'1px',marginBottom:'10px',fontFamily:'"JetBrains Mono",monospace'}}>Project scope</div><div style={{display:'flex',gap:'8px'}}>{EST_SCOPES.map(s=>(<button key={s.id} onClick={()=>setScope(s.id)} style={{flex:1,padding:'9px',borderRadius:'9px',border:`1px solid ${scope===s.id?accent:T.border}`,background:scope===s.id?`${accent}12`:'transparent',color:scope===s.id?accent:T.textMuted,fontSize:'0.88rem',cursor:'pointer',transition:`all 0.2s ${EASE}`,fontFamily:'"Inter",sans-serif'}}>{s.label}</button>))}</div></div><div><div style={{fontSize:'0.72rem',color:T.textFaint,textTransform:'uppercase',letterSpacing:'1px',marginBottom:'10px',fontFamily:'"JetBrains Mono",monospace'}}>Timeline — {timeline} weeks {timeline<3?'⚡ rush':''}</div><input type="range" min="2" max="12" step="1" value={timeline} onChange={e=>setTimeline(+e.target.value)} style={{width:'100%',accentColor:accent,cursor:'pointer dalloம'} /* typing error placeholder */}/><div style={{display:'flex',justifyContent:'space-between',fontSize:'0.75rem',color:T.textFaint,marginTop:'5px',fontFamily:'"JetBrains Mono",monospace'}}><span>2 wk</span><span>12 wk</span></div></div><div style={{borderTop:`1px solid ${T.border}`,paddingTop:'18px',display:'flex',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',gap:'12px'}}><div><div style={{fontSize:'0.72rem',color:T.textFaint,textTransform:'uppercase',letterSpacing:'1px',fontFamily:'"JetBrains Mono",monospace',marginBottom:'4px'}}>Estimated range</div><div style={{fontSize:'1.8rem',fontWeight:700,fontFamily:'"Space Grotesk",sans-serif',color:accent,letterSpacing:'-0.02em',transition:'color 0.4s'}}>{fmt(estimate)} – {fmt(Math.round(estimate*1.3/1000)*1000)}</div><div style={{fontSize:'0.75rem',color:T.textVeryFaint,marginTop:'3px'}}>indicative · final quote after consultation</div></div><MagneticButton onClick={()=>onInquire(selected.label)} strength={0.2} style={{background:accent,color:'#07080f',border:'none',padding:'12px 22px',borderRadius:'10px',fontWeight:700,fontSize:'0.88rem',cursor:'pointer',fontFamily:'"Inter",sans-serif',whiteSpace:'nowrap',transition:`background 0.4s ${EASE}`}}>Get exact quote →</MagneticButton></div></div>);}
 
 const TESTIMONIALS=[{name:'Arjun Mehta',role:'Founder, RetailEdge',text:'ZenithLogic Solutions delivered our e-commerce platform in 6 weeks flat. Sales conversions went up 40% in the first month. Genuinely the best tech partner we have worked with.'},{name:'Priya Nair',role:'Marketing Head, SpiceRoute Foods',text:'Our Google Ads ROAS went from 1.8x to 4.2x after ZenithLogic Solutions took over the campaigns. They actually understand performance marketing, not just design.'},{name:'Karthik Sundaram',role:'CEO, LogiTrack',text:'The Android app they built handles 500+ daily active drivers without a hiccup. Clean code, great documentation, and they were available at every step.'},{name:'Deepa Krishnan',role:'Owner, Studio Bloom',text:'I needed a portfolio that felt like me, not a template. ZenithLogic Solutions nailed the brief on the first revision. My inquiry rate doubled within two weeks.'}];
 function Testimonials({accent,T}){const[active,setActive]=useState(0);const tiltRef=useTilt(4);useEffect(()=>{const t=setInterval(()=>setActive(i=>(i+1)%TESTIMONIALS.length),5000);return()=>clearInterval(t);},[]);const t=TESTIMONIALS[active];return(<div style={{position:'relative'}}><div ref={tiltRef} style={{background:T.cardBg,border:`1px solid ${T.border}`,borderRadius:'20px',padding:'40px',minHeight:'180px',transition:`border-color 0.4s ${EASE},box-shadow 0.4s ${EASE},transform 0.2s ${EASE}`,borderTopColor:`${accent}40`,willChange:'transform'}}><div style={{fontSize:'2rem',color:accent,lineHeight:1,marginBottom:'16px',fontFamily:'Georgia,serif',opacity:0.6}}>"</div><p style={{color:T.textMuted,lineHeight:1.75,fontSize:'1rem',margin:'0 0 24px',fontStyle:'italic'}}>{t.text}</p><div style={{display:'flex',alignItems:'center',gap:'12px'}}><div style={{width:'38px',height:'38px',borderRadius:'50%',background:`${accent}22`,border:`1px solid ${accent}40`,display:'flex',alignItems:'center',justifyContent:'center',fontSize:'0.85rem',fontWeight:700,color:accent,fontFamily:'"Space Grotesk",sans-serif',flexShrink:0}}>{t.name.split(' ').map(w=>w[0]).join('')}</div><div><div style={{fontSize:'0.9rem',fontWeight:600,color:T.text}}>{t.name}</div><div style={{fontSize:'0.78rem',color:T.textFaint}}>{t.role}</div></div></div></div><div style={{display:'flex',gap:'7px',marginTop:'16px',justifyContent:'center'}}>{TESTIMONIALS.map((_,i)=>(<button key={i} onClick={()=>setActive(i)} style={{width:i===active?22:7,height:'7px',borderRadius:'4px',border:'none',cursor:'pointer',background:i===active?accent:T.border,transition:`all 0.35s ${EASE}`,padding:0}}/>))}</div></div>);}
@@ -858,8 +809,9 @@ function LocationSection({accent,T,EASE}){const mapTiltRef=useTilt(2);return(<se
 
 /* ── Main app ── */
 export default function App() {
+  const [loading, setLoading] = useState(true);
   const [theme,        setTheme]        = useState('dark');
-  const [menuOpen,     setMenuOpen]     = useState(false);
+  const [menuOpen,       setMenuOpen]     = useState(false);
   const [scrollPct,    setScrollPct]    = useState(0);
   const [formSuccess,  setFormSuccess]  = useState(false);
   const [showCookie,   setShowCookie]   = useState(true);
@@ -896,6 +848,11 @@ export default function App() {
   const scrollTo = useCallback((id)=>{ document.getElementById(id)?.scrollIntoView({behavior:'smooth'}); setMenuOpen(false); },[]);
   const handleInquire = (svcLabel) => { setPrefillSvc(svcLabel); setShowEstimator(false); scrollTo('contact'); };
   const navLinks = ['Services','Work','Vision','Location','Contact'];
+
+  // ✦ Welcome Screen Loading Logic - Fixed safely below accent declaration
+  if (loading) {
+    return <WelcomeScreen onDone={() => setLoading(false)} accent={accent || '#00ffcc'} />;
+  }
 
   return (
     <div style={{
@@ -1192,7 +1149,7 @@ export default function App() {
 
         <LocationSection accent={accent} T={T} EASE={EASE}/>
 
-        {/* Footer — Logo3D here is a separate instance, no duplication due to loadThree() guard */}
+        {/* Footer */}
         <footer style={{padding:'28px 7%',borderTop:`1px solid ${T.footerBorder}`,display:'flex',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:12}}>
           <div style={{display:'flex',alignItems:'center',gap:'10px'}}>
             <Logo3D accent={accent} size="normal"/>
