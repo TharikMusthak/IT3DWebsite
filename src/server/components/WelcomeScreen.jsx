@@ -26,9 +26,8 @@ function LogoMark({ accent }) {
 }
 
 /* ── Welcome / loading screen ── */
-export default function WelcomeScreen({ onDone, accent = '#00ffcc', minDuration = 1800 }) {
+export default function WelcomeScreen({ onDone, accent = '#00ffcc', minDuration = 2000 }) { 
   const [progress, setProgress] = useState(0);
-  const [exiting, setExiting] = useState(false);
 
   useEffect(() => {
     let raf;
@@ -36,13 +35,12 @@ export default function WelcomeScreen({ onDone, accent = '#00ffcc', minDuration 
     const tick = (now) => {
       const elapsed = now - start;
       const pct = Math.min(elapsed / minDuration, 1);
-      // ease-out curve for a satisfying "almost there" feel
       setProgress(1 - Math.pow(1 - pct, 3));
       if (pct < 1) {
         raf = requestAnimationFrame(tick);
       } else {
-        setExiting(true);
-        setTimeout(() => onDone?.(), 650);
+        // ✦ டைம் டிலே இல்லாம மெயின் ஆப்பை உடனே லோட் செய்ய வைக்கிறோம்
+        onDone?.(); 
       }
     };
     raf = requestAnimationFrame(tick);
@@ -60,10 +58,6 @@ export default function WelcomeScreen({ onDone, accent = '#00ffcc', minDuration 
       justifyContent: 'center',
       backgroundColor: '#07080f',
       backgroundImage: `radial-gradient(ellipse 70% 50% at 50% 30%, ${accent}14, transparent 60%)`,
-      opacity: exiting ? 0 : 1,
-      transform: exiting ? 'scale(1.04)' : 'scale(1)',
-      transition: `opacity 0.6s ${EASE}, transform 0.6s ${EASE}`,
-      pointerEvents: exiting ? 'none' : 'auto',
     }}>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap"/>
       <style>{`
