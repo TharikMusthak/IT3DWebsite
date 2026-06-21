@@ -39,7 +39,7 @@ export default function WelcomeScreen({ onDone, accent = '#00ffcc', minDuration 
       if (pct < 1) {
         raf = requestAnimationFrame(tick);
       } else {
-        // ✦ டைம் டிலே இல்லாம மெயின் ஆப்பை உடனே லோட் செய்ய வைக்கிறோம்
+       
         onDone?.(); 
       }
     };
