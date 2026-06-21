@@ -176,7 +176,7 @@ export default function LocationSection({ accent, T }) {
               </g>
             </svg>
 
-            <div style={{ position: 'relative', background: T.mapOverlayGrad, padding: '24px 20px 18px', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', marginTop: '-60px' }}>
+            <div style={{ position: 'relative', background: T.mapOverlayGrad, padding: '24px 20px 18px', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap', marginTop: '3px' }}>
               <div>
                 <div style={{ fontFamily: '"Space Grotesk",sans-serif', fontWeight: 700, fontSize: '1rem', color: T.text, marginBottom: 2 }}>ZenithLogic Solutions</div>
                 <div style={{ fontSize: '0.78rem', color: T.mapCoordColor, fontFamily: '"JetBrains Mono",monospace' }}>11.0168° N, 76.9558° E</div>
