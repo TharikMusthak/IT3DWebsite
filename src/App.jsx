@@ -17,6 +17,7 @@ import NetworkVisual, { TOPOLOGIES } from './server/components/NetworkVisual';
 import { FloatingCodeSnippets, TypingHeadline } from './server/components/HeroElements';
 import Services from './server/components/Services';
 import StatsRow from './server/components/StatsRow';
+import Marquee from './server/components/Marquee';
 
 const FONTS = 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap';
 const EASE = 'cubic-bezier(0.16, 1, 0.3, 1)';
@@ -610,7 +611,10 @@ export default function App() {
               <Globe3D accent={accent} />
             </div>
           </section>
+          {/* Tech Stack Marquee */}
+             <Marquee accent={accent} T={T} />
 
+             <div style={{ paddingBottom: '60px' }}></div>
           {/* ── Holographic Stats Strip ── */}
           <section style={{ padding: '0 7% 60px' }}>
             <GSAPReveal type="image">
